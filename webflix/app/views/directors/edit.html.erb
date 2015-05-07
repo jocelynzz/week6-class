@@ -1,0 +1,14 @@
+<%= form_tag "/directors/#{@director.id}", :method => 'patch' do %>
+
+  <div>
+    <label for="name">Name:</label>
+    <input size="80" name="title" id="name" value="<%= @director.name %>">
+  </div>
+
+  <input type="submit" name="commit" value="Update Director">
+<% end %>
+
+
+
+
+

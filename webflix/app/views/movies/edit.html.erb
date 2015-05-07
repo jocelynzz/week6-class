@@ -1,0 +1,62 @@
+<!-- <form action="/movies/<%= @movie.id %>/update"> -->
+<%= form_tag "/movies/#{@movie.id}", :method => 'patch' do %>
+
+  <div>
+    <label for="title">Title:</label>
+    <input size="80" name="title" id="title" value="<%= @movie.title %>">
+  </div>
+
+  <div>
+    <label for="year">Year:</label>
+    <input size="4" name="year" id="year" value="<%= @movie.year %>">
+  </div>
+
+  <div>
+    <label for="runtime">Runtime (minutes)</label>
+    <input name="runtime" id="runtime" value="<%= @movie.runtime %>">
+  </div>
+
+  <div>
+    <label for="poster_url">Link to Poster:</label>
+    <input size="80" name="poster_url" value="<%= @movie.poster_url %>" id="poster_url" type="url">
+  </div>
+
+  <div>
+    <label>MPAA Rated: </label>
+    <select name="rated" value="<%= @movie.rated %>">
+      <option>NOT RATED</option>
+      <option>G</option>
+      <option>PG</option>
+      <option>PG-13</option>
+      <option>R</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="stars">Star Rating:</label>
+    <input name="stars" value="<%= @movie.stars %>" type="number" min="1" max="10">
+  </div>
+
+  <div>
+    <textarea cols="80" rows="5"><%= simple_format(@movie.plot) %></textarea>
+  </div>
+
+  <div>
+    <label for="director_id">Directed By: </label>
+    <select name="director_id" value="<%= @movie.director_id %>">
+      <% Director.all.each do |director| %>
+        <option value="<%= director.id %>">
+          <%= director.name %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <input type="submit" name="commit" value="Update Movie">
+
+<% end %>
+
+
+
+
+

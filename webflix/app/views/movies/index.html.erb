@@ -1,0 +1,45 @@
+<%= form_tag movies_url, :method => "get" do %>
+
+  <%= text_field_tag :keyword %>
+  <%= submit_tag "Search" %>
+
+<% end %>
+
+<!-- <form action="movies" method="get">
+  <input name="keyword" type="text">
+  <input type="submit" name="commit" value="Search">
+</form>
+ -->
+<p><%= link_to "Add a New Movie", "/movies/new" %></p>
+
+<p><%= @movies.count %> Movies.</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Running Time</th>
+    <th>Rating</th>
+    <th></th>
+  </tr>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= link_to movie.title, movie_url(movie.id) %></td>
+      <td><%= movie.year %></td>
+      <td><%= movie.runtime %> minutes</td>
+      <td>
+        <% movie.stars.times do %>
+          &#9733;
+        <% end %>
+        <% (10 - movie.stars).times do %>
+          &#9734;
+        <% end %>
+      </td>
+      <td><%= link_to "Edit...", "/movies/#{movie.id}/edit" %></td>
+      <!-- <a href="/movies/1/delete">Delete</a> -->
+
+      <td><%= link_to "Delete", "/movies/#{movie.id}", :method => 'delete' %></td>
+    </tr>
+  <% end %>
+
+</table>

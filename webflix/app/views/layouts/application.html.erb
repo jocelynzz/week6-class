@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webflix</title>
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <h1><%= link_to "WebFlix", "/" %>
+
+      <small><%= link_to "Movies", '/movies' %></small>
+      <small><%= link_to "Directors", '/directors' %></small>
+      <small><%= link_to "Actors", '/actors' %></small>
+    </h1>
+
+    <% if notice.present? %>
+      <div class="alert alert-info"%>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+</body>
+</html>
